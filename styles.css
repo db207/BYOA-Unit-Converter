@@ -65,7 +65,7 @@
 
 /* Base styles */
 body {
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -184,6 +184,7 @@ input:checked + .slider:before {
 select, input {
     padding: 0.875rem;
     font-size: 1rem;
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
     width: 100%;
     border: 2px solid var(--border-color);
     border-radius: var(--border-radius);
@@ -231,6 +232,12 @@ input::placeholder {
     box-sizing: border-box;
     border: 1px solid var(--border-color);
     transition: all 0.3s ease;
+}
+
+#result.error-message {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
 }
 
 #result:not(:empty) {

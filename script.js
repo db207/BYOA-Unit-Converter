@@ -138,13 +138,16 @@ function convert() {
     const metricConversions = document.getElementById('metricConversions');
     const unitTypeToggle = document.getElementById('unitType');
     const isWeightCalculation = unitTypeToggle.checked;
+    const resultElement = document.getElementById('result');
 
     if (isNaN(fromValue)) {
-        document.getElementById('result').textContent = 'Please enter a valid number';
+        resultElement.textContent = 'Please enter a valid number';
+        resultElement.classList.add('error-message');
         metricConversions.innerHTML = '';
         return;
     }
 
+    resultElement.classList.remove('error-message');
     let result;
     if (fromUnit === toUnit) {
         result = fromValue;
@@ -152,7 +155,7 @@ function convert() {
         result = fromValue * conversionRates[fromUnit][toUnit];
     }
 
-    document.getElementById('result').textContent = 
+    resultElement.textContent = 
         `Result: ${fromValue} ${fromUnit} = ${result.toFixed(2)} ${toUnit}`;
 
     // Only show metric conversions for length calculations
