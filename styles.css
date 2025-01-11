@@ -1,0 +1,321 @@
+:root {
+    /* Light theme variables */
+    --primary-color: #6366f1;
+    --secondary-color: #a855f7;
+    --success-color: #22c55e;
+    --text-color: #1e293b;
+    --text-secondary: #64748b;
+    --background-color: #f1f5f9;
+    --card-background: #ffffff;
+    --border-color: rgba(99, 102, 241, 0.1);
+    --border-radius: 16px;
+    --shadow: 0 10px 30px rgba(99, 102, 241, 0.1);
+    --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+/* Dark theme variables */
+[data-theme="dark"] {
+    --primary-color: #818cf8;
+    --secondary-color: #c084fc;
+    --success-color: #34d399;
+    --text-color: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --background-color: #0f172a;
+    --card-background: #1e293b;
+    --border-color: rgba(129, 140, 248, 0.1);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Theme toggle styles */
+.theme-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+}
+
+.theme-toggle button {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 1.25rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle button:hover {
+    background-color: var(--background-color);
+    transform: scale(1.1);
+}
+
+.theme-toggle i {
+    transition: transform 0.5s ease;
+}
+
+[data-theme="dark"] .theme-toggle .fa-sun {
+    transform: rotate(360deg);
+}
+
+/* Base styles */
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding: 1rem;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+
+.container {
+    position: relative;
+    background-color: var(--card-background);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    width: 90%;
+    max-width: 480px;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+h1 {
+    text-align: center;
+    margin: 0 0 1.5rem 0;
+    font-size: 2rem;
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.converter-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: center;
+}
+
+.toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    background-color: var(--background-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: visible;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-label {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Toggle Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 32px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient);
+    transition: .4s;
+    border-radius: 32px;
+    overflow: visible;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 24px;
+    width: 24px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input:checked + .slider {
+    background: var(--gradient);
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(28px);
+}
+
+select, input {
+    padding: 0.875rem;
+    font-size: 1rem;
+    width: 100%;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--card-background);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    outline: none;
+    box-sizing: border-box;
+}
+
+select:focus, input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+select:hover, input:hover {
+    border-color: var(--secondary-color);
+    background-color: var(--background-color);
+}
+
+input::placeholder {
+    color: var(--text-secondary);
+}
+
+.arrow {
+    font-size: 1.5rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0.5rem 0;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+#result {
+    font-size: 1.25rem;
+    margin-top: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    text-align: center;
+    padding: 1.25rem;
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+#result:not(:empty) {
+    background: rgba(99, 102, 241, 0.05);
+}
+
+.metric-conversions {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 1rem;
+    border-top: 2px solid var(--border-color);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.metric-conversions div {
+    margin: 0.5rem 0;
+}
+
+.metric-conversions div:first-child {
+    color: var(--text-color);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+}
+
+.metric-conversions:empty {
+    display: none;
+}
+
+optgroup {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* Animation Keyframes */
+@keyframes ripple {
+    0% {
+        transform: scale(0.8);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 480px) {
+    body {
+        padding: 1rem;
+    }
+    
+    .container {
+        padding: 1.5rem;
+        width: 100%;
+        margin: 0.5rem;
+    }
+    
+    h1 {
+        font-size: 1.75rem;
+    }
+} 
